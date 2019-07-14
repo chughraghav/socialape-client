@@ -23,6 +23,9 @@ import axios from "axios";
 
 const theme = createMuiTheme(themeFile);
 
+axios.defaults.baseURL =
+  "https://asia-east2-socialape-20235.cloudfunctions.net/api";
+
 const token = localStorage.FBIdToken;
 if (token) {
   const decodedToken = jwtDecode(token);
@@ -49,7 +52,11 @@ function App() {
               <AuthRoute exact path="/login" component={login} />
               <AuthRoute exact path="/signup" component={signup} />
               <Route exact path="/users/:handle" component={user} />
-              <Route exact path="/users/:handle/scream/:screamId" component={user} />
+              <Route
+                exact
+                path="/users/:handle/scream/:screamId"
+                component={user}
+              />
             </Switch>
           </div>
         </Router>
